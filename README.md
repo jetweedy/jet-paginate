@@ -5,9 +5,18 @@
 1. Download this Zip.
 1. Upload the Zip to your Plugins in the Dashboard
 1. Activate the plugin
-1. Stick the following code anywhere in your content that you want to break a post into another page:
-
+1. Use the following shorttags conventions. There are also some optional parameters to change the "Next" and "Prev" texts on the nav links.
 ```
 [jet-paginate]
+  Page 1 blah blah blah
+  [jet-page]
+  Page 2 blah blah blah
+[/jet-paginate]
+
+[jet-paginate next="Continue" prev="Go back"]
+  Page 1 blah blah blah
+  [jet-page]
+  Page 2 blah blah blah
+[/jet-paginate]
 ```
 
