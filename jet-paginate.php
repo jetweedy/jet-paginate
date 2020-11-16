@@ -12,6 +12,19 @@ Version: 1.0.0
 Author URI: https://jonathantweedy.com
 */
 
+function jetPaginate_prepExcerpt($content) {
+//    $content = strip_shortcodes( $content );
+    $words = explode(" ", $content);
+//    if (count($words) > 20) {
+//        array_splice($words, 20);
+//    }
+    $content = implode(" ", $words) . "...";
+    $content .= "<div class=\"link-more\"><a href=\"".get_permalink(get_the_ID())."\">Read More</a></div>";
+    return $content;
+} 
+add_filter('the_excerpt', 'jetPaginate_prepExcerpt');
+
+
 function jet_paginate( $atts, $content ){
     
     $next = "Next";
