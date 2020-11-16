@@ -19,4 +19,5 @@
   Page 2 blah blah blah
 [/jet-paginate]
 ```
-
+## Additional Notes
+ * You'll need to use the 'Excerpt' feature in your posts, or else the default excerpt appears blank (because you've wrapped your content in a shortcode that the default excerpt process ignores).
