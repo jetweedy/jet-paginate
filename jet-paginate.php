@@ -32,29 +32,32 @@ function jet_paginate( $atts, $content ){
     $prev = "Previous";
     
     $jetp = isset($_GET['jetp']) ? intval($_GET['jetp']) : 0;
-    $x = explode("[jet-page]", $content);
     
-    if (isset($atts['prev']))
-        $prev = $atts['prev'];
-    if (isset($atts['next']))
-        $next = $atts['next'];
-    
-    if (count($x) > $jetp) {
-        $output = "";
-        if ($jetp > 0) {
-            $output .= "<div class='jet-paginate-nav' id='jet-paginate-prev'><a href='?jetp=".($jetp-1)."'>&#8592; ".$prev."</a></div>";
+    if ($jetp > -1) {
+        $x = explode("[jet-page]", $content);
+        if (isset($atts['prev']))
+            $prev = $atts['prev'];
+        if (isset($atts['next']))
+            $next = $atts['next'];
+        if (count($x) > $jetp) {
+            $output = "";
+            if ($jetp > 0) {
+                $output .= "<div class='jet-paginate-nav' id='jet-paginate-prev'><a href='?jetp=".($jetp-1)."'>&#8592; ".$prev."</a></div>";
+            }
+            $output .= $x[$jetp];
+            if ($jetp < (count($x)-1)) {
+                $output .= "<div class='jet-paginate-nav' id='jet-paginate-next'><a href='?jetp=".($jetp+1)."'>".$next." &#8594;</a></div>";
+            }
+            $output = do_shortcode($output);
+            return $output;
+        } else {
+            $content = do_shortcode($content);
+            return $content;
         }
-        $output .= $x[$jetp];
-        if ($jetp < (count($x)-1)) {
-            $output .= "<div class='jet-paginate-nav' id='jet-paginate-next'><a href='?jetp=".($jetp+1)."'>".$next." &#8594;</a></div>";
-        }
-        $output = do_shortcode($output);
-        return $output;
     } else {
         $content = do_shortcode($content);
         return $content;
     }
-
 }
 add_shortcode( 'jet-paginate', 'jet_paginate' );
 
