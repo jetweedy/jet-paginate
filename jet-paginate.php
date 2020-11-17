@@ -20,6 +20,7 @@ function jetPaginate_prepExcerpt($content) {
 //    }
     $content = implode(" ", $words) . "...";
     $content .= "<div class=\"link-more\"><a href=\"".get_permalink(get_the_ID())."\">Read More</a></div>";
+    $content = do_shortcode($content);
     return $content;
 } 
 add_filter('the_excerpt', 'jetPaginate_prepExcerpt');
@@ -47,8 +48,10 @@ function jet_paginate( $atts, $content ){
         if ($jetp < (count($x)-1)) {
             $output .= "<div class='jet-paginate-nav' id='jet-paginate-next'><a href='?jetp=".($jetp+1)."'>".$next." &#8594;</a></div>";
         }
+        $output = do_shortcode($output);
         return $output;
     } else {
+        $content = do_shortcode($content);
         return $content;
     }
 
