@@ -19,6 +19,7 @@ function jetPaginate_prepExcerpt($content) {
 //        array_splice($words, 20);
 //    }
     $content = implode(" ", $words) . "...";
+	$content = preg_replace("/<div class=\\\"link-more\\\">.*?<\/div>/", "", $content);
     $content .= "<div class=\"link-more\"><a href=\"".get_permalink(get_the_ID())."\">Read More</a></div>";
     $content = do_shortcode($content);
     return $content;
