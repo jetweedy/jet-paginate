@@ -1,5 +1,9 @@
 # jet-paginate
 
+## Purpose
+
+This plugin lets you mark up snippets of a single page's content to be paginated, so that you can link to a single page and provide next/previous // back/forward navigation within your page content without having to create separate pages to do so or use more complicated programming under the hood.
+
 ## Usage
 
 1. Download this Zip.
